@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>lashbrow_studi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #FBF8FC;
+      --card: #FFFFFF;
+      --accent: #E9D9F0;
+      --text: #2E2E2E;
+      --muted: #8b8b8b;
+      --whatsapp: #25D366;
+      --radius: 12px;
+      --shadow: 0 6px 18px rgba(46,46,46,0.06);
+      --maxw: 1000px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg) url('images/bg-pastel.jpg') center/cover no-repeat;
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+    }
+    header{
+      text-align:center;
+      padding:48px 20px;
+    }
+    .brand{
+      font-family: 'Montserrat', sans-serif;
+      font-size:28px;
+      letter-spacing:1px;
+      margin:0;
+      color:var(--text);
+    }
+    .tag{
+      color:var(--muted);
+      margin-top:6px;
+      font-size:14px;
+    }
+    main{ max-width:var(--maxw); margin:30px auto; padding:0 16px 80px; }
+    .grid{ display:grid; gap:18px; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); margin-top:18px; }
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px;
+      transition:transform .35s ease, box-shadow .35s ease;
+      opacity:0; transform: translateY(18px);
+    }
+    .card.visible{ opacity:1; transform:none; }
+    h2{ font-family: 'Montserrat', sans-serif; color:var(--text); margin:6px 0 10px; font-size:20px; text-align:center; }
+    .name{ font-weight:600; font-size:18px; }
+    .years{ color:var(--muted); font-size:14px; margin-top:6px; }
+    .price{ font-weight:600; margin-top:6px; }
+    .muted{ color:var(--muted); font-size:14px; }
+    .contacts{ text-align:center; margin-top:22px; }
+    .map-wrapper{ margin-top:18px; border-radius:12px; overflow:hidden; box-shadow:var(--shadow); }
+    .btn{
+      display:inline-block;
+      padding:12px 20px;
+      border-radius:10px;
+      background:var(--accent);
+      color:var(--text);
+      text-decoration:none;
+      font-weight:600;
+      transition: transform .18s ease, box-shadow .18s ease;
+      box-shadow: 0 6px 18px rgba(233,217,240,0.4);
+    }
+    .btn:hover{ transform: scale(1.07); box-shadow: 0 10px 22px rgba(0,0,0,0.06) }
+    .carousel{ position:relative; margin-top:18px; border-radius:12px; overflow:hidden; background:var(--card); box-shadow:var(--shadow); }
+    .slides{ display:flex; transition:transform .45s cubic-bezier(.22,.9,.3,1); }
+    .slide{ min-width:100%; padding:0; }
+    .slide img{ width:100%; height:320px; object-fit:cover; display:block; }
+    .carousel .nav{ position:absolute; top:50%; transform:translateY(-50%); width:100%; display:flex; justify-content:space-between; pointer-events:none; }
+    .carousel button{ pointer-events:auto; background:rgba(255,255,255,0.9); border:0; padding:8px 10px; margin:0 10px; border-radius:10px; cursor:pointer; box-shadow:0 4px 10px rgba(0,0,0,0.08); }
+    form{ margin-top:18px; background:var(--card); padding:18px; border-radius:12px; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:10px; max-width:400px; margin:auto; }
+    .form-row{ display:flex; gap:12px; margin-bottom:10px; flex-wrap:wrap; }
+    .form-row input, .form-row textarea{ flex:1 1 200px; padding:12px; border-radius:8px; border:1px solid #eee; font-size:15px; }
+    .form-row textarea{ min-height:100px; resize:vertical; }
+    .form-actions{ display:flex; gap:12px; align-items:center; justify-content:flex-end; margin-top:6px; }
+    .whatsapp-float{
+      position:fixed;
+      right:16px;
+      bottom:16px;
+      z-index:999;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      background:linear-gradient(90deg,var(--whatsapp),#16b354);
+      color:white;
+      padding:12px 14px;
+      border-radius:999px;
+      box-shadow:0 10px 30px rgba(37,211,102,0.18);
+      text-decoration:none;
+      font-weight:600;
+    }
+    .whatsapp-float img{ width:22px; height:22px; }
+    footer{ text-align:center; margin-top:36px; color:var(--muted); font-size:13px; padding-bottom:40px; }
+    @media(max-width:520px){
+      .brand{ font-size:22px }
+      .slide img{ height:220px }
+      .carousel button{ padding:6px 8px }
+    }
+  </style>
+</head>
+<body>
+
+
+<header>
+  <p class="brand">lashbrow_studi</p>
+  <p class="tag">Роскошные ресницы и брови — Майлина 19, БЦ Таймас, 5 этаж, офис 520</p>
+</header>
+
+<main>
+  <!-- Мастера -->
+  <section>
+    <h2>Наши мастера</h2>
+    <div class="grid">
+      <div class="card js-anim"><p class="name">Маргарита</p><p class="years">Опыт: 4 года</p></div>
+      <div class="card js-anim"><p class="name">Айгуль</p><p class="years">Опыт: 8 лет</p></div>
+      <div class="card js-anim"><p class="name">Алия</p><p class="years">Опыт: 2 года</p></div>
+      <div class="card js-anim"><p class="name">Эльвира</p><p class="years">Опыт: 3 года</p></div>
+    </div>
+  </section>
+
+  <!-- Услуги -->
+  <section>
+    <h2>Услуги и цены</h2>
+    <div class="grid">
+      <div class="card js-anim">
+        <p class="muted">Наращивание ресниц</p>
+        <p class="price">Мастер — 8 000 тг</p>
+        <p class="price">Топ Мастер — 9 000 тг</p>
+        <p class="price">Эксперт — 12 000 тг</p>
+        <p class="muted">Доп. опции: Лучики, Мокрый, Изгибы L/M, Голливуд — +1 000 тг</p>
+      </div>
+      <div class="card js-anim">
+        <p class="muted">Коррекция бровей — 2 500 тг</p>
+        <p class="muted">Ламинирование ресниц — 7 900 / 8 900 тг</p>
+        <p class="muted">Ламинирование бровей — 7 900 / 8 900 тг</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Галерея -->
+  <section>
+    <h2>Наши работы</h2>
+    <div class="carousel card js-anim" id="carousel">
+      <div class="slides" id="slides">
+        <div class="slide"><img src="images/work1.jpg" alt="Работа 1"></div>
+        <div class="slide"><img src="images/work2.jpg" alt="Работа 2"></div>
+        <div class="slide"><img src="images/work3.jpg" alt="Работа 3"></div>
+      </div>
+      <div class="nav">
+        <button id="prev" aria-label="Prev">‹</button>
+        <button id="next" aria-label="Next">›</button>
+      </div>
+      <div id="indicators" style="text-align:center; margin:10px 0 0;"></div>
+    </div>
+  </section>
+
+  <!-- Форма записи -->
+  <section>
+    <h2>Онлайн-запись</h2>
+    <form id="bookingForm" action="https://formspree.io/f/{YOUR_FORMSPREE_ID}" method="POST">
+      <div class="form-row">
+        <input type="text" name="Имя" placeholder="Имя" required>
+        <input type="tel" name="Телефон" placeholder="Телефон" required pattern="[0-9\-\+\s]+">
+      </div>
+      <div class="form-row">
+        <input type="date" name="Дата" required>
+        <textarea name="Комментарий" placeholder="Комментарий"></textarea>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn">Записаться</button>
+        <span id="formStatus" class="muted"></span>
+      </div>
+    </form>
+  </section>
+
+  <!-- Контакты и карта -->
+  <section>
+    <h2>Контакты</h2>
+    <div class="contacts">
+      <p><b>Адрес:</b> Майлина 19, БЦ Таймас, 5 этаж, кабинет 520</p>
+      <p><b>График работы:</b> без выходных, с 10:00 до 19:00</p>
+      <div class="map-wrapper">
+        <iframe src="https://www.google.com/maps?q=Майлина+19,+БЦ+Таймас,+5+этаж,+кабинет+520&output=embed" width="100%" height="280" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © 2025 lashbrow_studi | Все права защищены
+</footer>
+
+<!-- Плавающая WhatsApp -->
+<a class="whatsapp-float" href="https://wa.me/77028529923?text=Здравствуйте,%20хочу%20записаться" target="_blank">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+  WhatsApp
+</a>
+
+<!-- Скрипты -->
+<script>
+// Анимация появления блоков
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){ entry.target.classList.add('visible'); }
+  });
+},{ threshold:0.2 });
+document.querySelectorAll('.js-anim').forEach(el=>observer.observe(el));
+
+// Галерея/карусель
+const slides = document.getElementById('slides');
+const slideEls = slides.querySelectorAll('.slide');
+const indicators = document.getElementById('indicators');
+let idx = 0;
+function showSlide(i){
+  idx = (i+slideEls.length)%slideEls.length;
+  slides.style.transform = `translateX(-${idx*100}%)`;
+  indicators.innerHTML = Array.from(slideEls).map((_,j)=>`<span style='display:inline-block;width:8px;height:8px;border-radius:50%;margin:0 3px;background:${j===idx?'#E9D9F0':'#eee'};transition:.2s'></span>`).join('');
+}
+document.getElementById('prev').onclick = ()=>showSlide(idx-1);
+document.getElementById('next').onclick = ()=>showSlide(idx+1);
+showSlide(0);
+
+// Форма записи
+const form = document.getElementById('bookingForm');
+const status = document.getElementById('formStatus');
+form.onsubmit = async e => {
+  e.preventDefault();
+  status.textContent = 'Отправка...';
+  const data = new FormData(form);
+  try {
+    const res = await fetch(form.action, { method:'POST', body:data, headers:{'Accept':'application/json'} });
+    if(res.ok){
+      status.textContent = 'Спасибо! Ваша заявка принята.';
+      form.reset();
+    } else {
+      status.textContent = 'Ошибка отправки. Попробуйте позже.';
+    }
+  } catch {
+    status.textContent = 'Ошибка сети.';
+  }
+};
+</script>
+</body>
+</html>
